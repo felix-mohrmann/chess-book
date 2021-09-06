@@ -1,3 +1,5 @@
+import Login from './pages/Login'
+
 export default function App() {
-  return <h1>I'm the first heading</h1>
+  return <Login />
 }
