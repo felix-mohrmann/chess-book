@@ -8,6 +8,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/profile" component={Profile} />
+        <Route path="/openings" component={Openings} />
       </Switch>
     </Router>
   )
