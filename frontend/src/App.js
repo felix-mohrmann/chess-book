@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import Openings from './pages/Openings'
 
 export default function App() {
   return (
