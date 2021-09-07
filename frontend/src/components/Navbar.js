@@ -1,10 +1,13 @@
 import styled from 'styled-components/macro'
+import { NavLink } from 'react-router-dom'
 
 export default function Navbar() {
   return (
     <Wrapper>
-      <h1>Hello</h1>
-      <h1>Bye</h1>
+      <NavLink exact to="/">
+        Login
+      </NavLink>
+      <NavLink to="/profile">Profile</NavLink>
     </Wrapper>
   )
 }
@@ -14,4 +17,15 @@ const Wrapper = styled.nav`
 
   display: flex;
   justify-content: space-evenly;
+
+  a {
+    text-decoration: none;
+    color: white;
+    padding: var(--size-l);
+    font-size: var(--size-xl);
+  }
+
+  a.active {
+    color: var(--accent);
+  }
 `

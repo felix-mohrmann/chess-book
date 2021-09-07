@@ -18,6 +18,9 @@ export const getLast100Games = name =>
 
 export const getProfile = () =>
   axios
-    .get(`https://lichess.org/api/account`, { headers })
+    .get(`https://lichess.org/api/account`, {
+      headers: {
+        Authorization: `Bearer lip_5pN9m1oQ0jShZVhbkUcr`,
+      },
+    })
     .then(response => response.data)
-    .catch(console.error)
