@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  application:
+    name: chess-book
+  datasource:
+    url: jdbc:${profile.datasource.url}
+    username: ${profile.datasource.user}
+    password: ${profile.datasource.pass}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+    hibernate:
+      ddl-auto: update
+
+server:
+  servlet:
+    context-path: "/api/${spring.application.name}"

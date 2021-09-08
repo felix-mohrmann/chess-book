@@ -1,0 +1,5 @@
+profile:
+  datasource:
+    url: postgresql://localhost:5432/chessBook
+    user: admin
+    pass: 123
