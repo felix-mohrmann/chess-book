@@ -1,0 +1,9 @@
+profile:
+  datasource:
+    url: postgresql://chess-book-postgres:5432/chess-book
+    user: admin
+    pass: 123
+
+chess-book:
+    user-service:
+      avatar-url: "http://docker.de"
