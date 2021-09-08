@@ -49,6 +49,23 @@
             <artifactId>postgresql</artifactId>
         </dependency>
 
+        <!-- Feign Client -->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>10.11</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-gson</artifactId>
+            <version>10.11</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-slf4j</artifactId>
+            <version>10.11</version>
+        </dependency>
+
         <!-- Testing -->
         <dependency>
             <groupId>com.h2database</groupId>
