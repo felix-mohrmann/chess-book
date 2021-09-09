@@ -18,8 +18,8 @@ public class LichessClient {
         this.lichessAPI = lichessAPI;
     }
 
-    public LichessGameDto getLastGame(String name){
-        return lichessAPI.getUsersLastGame(getAccessToken(), name);
+    public LichessGamesDto getGames(String name){
+        return lichessAPI.getGames(getAccessToken(), name);
     }
 
     private String getAccessToken() {
