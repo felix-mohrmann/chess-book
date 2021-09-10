@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static de.yourchessboook.controller.LichessControllerImpl.LICHESS_CONTROLLER;
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @Tag(name = LICHESS_CONTROLLER, description = "Query Lichess API")
 @Api(
@@ -19,6 +20,8 @@ import static de.yourchessboook.controller.LichessControllerImpl.LICHESS_CONTROL
 public interface LichessController {
 
     @Operation(summary = "Fetching all user games from Lichess.")
-    @GetMapping
+    @GetMapping(
+            produces = APPLICATION_JSON_VALUE
+    )
     ResponseEntity<LichessGames> getGames(@PathVariable ("username") String username);
 }

@@ -1,20 +1,38 @@
 package de.yourchessboook.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
+@Table(name = "games")
+@Getter
+@Setter
 public class GameEntity {
+
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     private Long id;
 
-    public Long getId() {
-        return id;
+    @Column
+    private String opening;
+
+    @Column(length = 8000)
+    private String moves;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameEntity that = (GameEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(opening, that.opening) && Objects.equals(moves, that.moves);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, opening, moves);
     }
 }

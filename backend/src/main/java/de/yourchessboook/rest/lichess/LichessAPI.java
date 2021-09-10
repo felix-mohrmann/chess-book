@@ -9,7 +9,11 @@ import java.util.List;
 import static de.yourchessboook.rest.lichess.LichessAPI.ACCESS_TOKEN_PARAM;
 
 @Headers(
-        "Authorization: Bearer {" + ACCESS_TOKEN_PARAM + "}"
+        {
+                "Authorization: Bearer {" + ACCESS_TOKEN_PARAM + "}",
+                "Content-Type: application/x-ndjson",
+                "Accept: application/x-ndjson"
+        }
 )
 public interface LichessAPI {
     String ACCESS_TOKEN_PARAM = "access-token";
