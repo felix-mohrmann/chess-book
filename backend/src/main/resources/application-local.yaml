@@ -1,0 +1,9 @@
+profile:
+  datasource:
+    url: postgresql://localhost:5432/chessBook
+    user: admin
+    pass: 123
+
+chess-book:
+  lichess-client:
+    access-token: 'lip_5pN9m1oQ0jShZVhbkUcr'

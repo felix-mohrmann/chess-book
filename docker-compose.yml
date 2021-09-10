@@ -1,0 +1,28 @@
+version: "2.1"
+
+# This docker-compose file has to be used for local development.
+# A local running database will be created before the service will be started.
+#
+# @see https://docs.docker.com/compose/overview/
+#
+# docker-compose up -d
+#
+
+services:
+  chess-book-postgres:
+    image: postgres:12.4
+    container_name: chess-book
+    mem_limit: 50m
+    environment:
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_USER: "admin"
+      POSTGRES_DB: "chess-book"
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - local-bridge
+
+networks:
+  local-bridge: # default network
+    driver: bridge
