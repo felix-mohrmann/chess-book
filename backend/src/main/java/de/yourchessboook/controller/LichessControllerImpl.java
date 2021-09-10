@@ -14,7 +14,7 @@ import static org.springframework.http.ResponseEntity.ok;
 @CrossOrigin
 public class LichessControllerImpl extends LichessControllerMapper implements LichessController {
 
-    public static final String LICHESS_CONTROLLER = "Github";
+    public static final String LICHESS_CONTROLLER = "Lichess";
     private final LichessService lichessService;
 
     @Autowired

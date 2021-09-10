@@ -6,12 +6,12 @@ export const getTokenWithLichessCode = code =>
     .then(response => response.data)
     .then(dto => dto.token)
 
-const headers = () => ({
+/*const headers = () => ({
   headers: {
     Accept: 'application/x-ndjson',
     Authorization: `Bearer lip_5pN9m1oQ0jShZVhbkUcr`,
   },
-})
+})*/
 
 export const getProfile = () =>
   axios

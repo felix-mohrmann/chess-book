@@ -1,4 +1,4 @@
-package de.yourchessboook;
+package de.yourchessboook.oauth;
 
 import java.awt.Desktop;
 import java.net.InetAddress;
@@ -44,7 +44,7 @@ public class LichessPKCE {
 
     }
 
-    static String login() throws Exception {
+    public static String login() throws Exception {
 
         // Prepare a new login.
         // We will generate a lot of parameters which will be used in this login,
