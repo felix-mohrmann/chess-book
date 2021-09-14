@@ -23,6 +23,9 @@ public class GameEntity {
     @Column(length = 8000)
     private String moves;
 
+    @Column
+    private boolean won;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
