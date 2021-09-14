@@ -4,6 +4,7 @@ import { useAuth } from '../auth/AuthProvider'
 import { useEffect } from 'react'
 import LinkButton from '../components/LinkButton'
 import Chessboard from 'chessboardjsx'
+import styled from 'styled-components/macro'
 
 export default function Login() {
   const { params } = useAuth()
