@@ -11,7 +11,7 @@ export default function LichessRedirect() {
 
   const code = search.get('code')
 
-  const { params, loginWithLichess } = useAuth()
+  const { loginWithLichess } = useAuth()
 
   const [loading, setLoading] = useState(true)
 
