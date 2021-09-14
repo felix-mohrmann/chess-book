@@ -1,26 +1,17 @@
 import axios from 'axios'
 
-const headers = () => ({
+export const getTokenWithLichessCode = (code, verifier) =>
+  axios
+    .post('/api/chess-book/auth/access-token', { code, verifier })
+    .then(response => response.data)
+
+const headers = token => ({
   headers: {
-    Accept: 'application/x-ndjson',
-    Authorization: `Bearer lip_5pN9m1oQ0jShZVhbkUcr`,
+    Authorization: `Bearer ${token}`,
   },
 })
 
-export const getLast100Games = name =>
+export const getProfile = token =>
   axios
-    .get(
-      `https://lichess.org/api/games/user/${name}?perfType=blitz&rated=true&opening=true&max=100`,
-      { headers }
-    )
-    .then(response => response.data)
-    .catch(console.error)
-
-export const getProfile = () =>
-  axios
-    .get(`https://lichess.org/api/account`, {
-      headers: {
-        Authorization: `Bearer lip_5pN9m1oQ0jShZVhbkUcr`,
-      },
-    })
+    .get(`https://lichess.org/api/account`, headers(token))
     .then(response => response.data)
