@@ -5,6 +5,7 @@ export default createGlobalStyle`
     --gray: #6c757d;
     --gray-dark: #343a40;
     --accent: #e9967a;
+    --neutral-light: #efefef;
 
     --size-xs: 4px;
     --size-s: 8px;

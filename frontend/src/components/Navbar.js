@@ -1,13 +1,18 @@
 import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../auth/AuthProvider'
 
 export default function Navbar() {
+  const { token } = useAuth()
   return (
     <Wrapper>
-      <NavLink exact to="/">
-        Login
-      </NavLink>
-      <NavLink to="/profile">Profile</NavLink>
+      {!token && (
+        <NavLink exact to="/">
+          Login
+        </NavLink>
+      )}
+      {token && <NavLink to="/profile">Profile</NavLink>}
+      {token && <NavLink to="/openings">Openings</NavLink>}
     </Wrapper>
   )
 }

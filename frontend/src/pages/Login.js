@@ -2,6 +2,7 @@ import PageStyle from '../components/PageStyle'
 import Navbar from '../components/Navbar'
 import { useAuth } from '../auth/AuthProvider'
 import { useEffect } from 'react'
+import LinkButton from '../components/LinkButton'
 
 export default function Login() {
   const { params } = useAuth()
@@ -26,7 +27,11 @@ export default function Login() {
   return (
     <PageStyle>
       <Navbar />
-      {params && <a href={lichessUrl}>Login with Lichess</a>}
+      {params && (
+        <LinkButton href={lichessUrl} secondary>
+          Login with Lichess
+        </LinkButton>
+      )}
     </PageStyle>
   )
 }
