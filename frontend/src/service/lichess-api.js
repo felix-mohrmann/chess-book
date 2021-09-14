@@ -1,23 +1,17 @@
 import axios from 'axios'
 
-export const getTokenWithLichessCode = code =>
+export const getTokenWithLichessCode = (code, verifier) =>
   axios
-    .post('api/chess-book/auth/access-token')
+    .post('/api/chess-book/auth/access-token', { code, verifier })
     .then(response => response.data)
-    .then(dto => dto.token)
 
-/*const headers = () => ({
+const headers = token => ({
   headers: {
-    Accept: 'application/x-ndjson',
-    Authorization: `Bearer lip_5pN9m1oQ0jShZVhbkUcr`,
+    Authorization: `Bearer ${token}`,
   },
-})*/
+})
 
-export const getProfile = () =>
+export const getProfile = token =>
   axios
-    .get(`https://lichess.org/api/account`, {
-      headers: {
-        Authorization: `Bearer lip_5pN9m1oQ0jShZVhbkUcr`,
-      },
-    })
+    .get(`https://lichess.org/api/account`, headers(token))
     .then(response => response.data)

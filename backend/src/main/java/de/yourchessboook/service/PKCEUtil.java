@@ -1,6 +1,7 @@
-package de.yourchessboook.oauth;
+package de.yourchessboook.service;
 
 import lombok.Getter;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -9,13 +10,15 @@ import java.util.Base64;
 import java.util.Random;
 
 @Getter
-public class OAuthService {
+@Service
+public class PKCEUtil {
 
-    String code_verifier = generateRandomCodeVerifier();
+    private final String code_verifier = generateRandomCodeVerifier();
 
     private final String code_challenge_method = "S256";
     private final String code_challenge = generateCodeChallenge(code_verifier);
     private final String state = generateRandomState();
+
 
     static String generateRandomCodeVerifier() {
         var bytes = new byte[32];

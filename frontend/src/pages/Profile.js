@@ -2,15 +2,19 @@ import PageStyle from '../components/PageStyle'
 import Navbar from '../components/Navbar'
 import { useEffect, useState } from 'react'
 import { getProfile } from '../service/lichess-api'
+import { useAuth } from '../auth/AuthProvider'
 
 export default function Profile() {
+  const { token } = useAuth()
   const [profile, setProfile] = useState()
 
   useEffect(() => {
-    getProfile()
-      .then(setProfile)
-      .catch(error => console.error(error))
-  }, [])
+    if (token) {
+      getProfile(token)
+        .then(setProfile)
+        .catch(error => console.error(error))
+    }
+  }, [token])
 
   return (
     <PageStyle>

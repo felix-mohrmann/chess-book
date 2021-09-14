@@ -1,21 +1,20 @@
 import PageStyle from '../components/PageStyle'
 import Navbar from '../components/Navbar'
-import { useEffect, useState } from 'react'
-import { getParams } from '../service/chess-book-api'
+import { useAuth } from '../auth/AuthProvider'
+import { useEffect } from 'react'
 
 export default function Login() {
-  const [params, setParams] = useState()
+  const { params } = useAuth()
   let lichessUrl = ''
 
   useEffect(() => {
-    getParams()
-      .then(setParams)
-      .catch(error => console.error(error))
+    localStorage.setItem('init', 'yes')
   }, [])
 
   if (params) {
+    localStorage.setItem('code_verifier', params[3])
     lichessUrl =
-      'https://lichess.org/oauth?response_type=code&redirect_uri=http://localhost:3000/profile&client_id=chess-book' +
+      'https://lichess.org/oauth?response_type=code&redirect_uri=http://localhost:3000/oauth/lichess_redirect&client_id=chess-book' +
       '&code_challenge=' +
       params[0] +
       '&code_challenge_method=' +

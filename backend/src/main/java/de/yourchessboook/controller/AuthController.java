@@ -1,19 +1,36 @@
 package de.yourchessboook.controller;
 
-import de.yourchessboook.oauth.OAuthService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import de.yourchessboook.api.LichessCodeAndVerifier;
+import de.yourchessboook.service.PKCEUtil;
+import de.yourchessboook.service.LichessOAuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 
+    private final LichessOAuthService lichessOAuthService;
+
+    @Autowired
+    public AuthController(LichessOAuthService lichessOAuthService) {
+        this.lichessOAuthService = lichessOAuthService;
+    }
+
     @GetMapping("/params")
     public String[] getParams(){
-        OAuthService oAuthService = new OAuthService();
-        return new String[]{oAuthService.getCode_challenge(), oAuthService.getCode_challenge_method(), oAuthService.getState()};
+        PKCEUtil pkceUtil = new PKCEUtil();
+        return new String[]{
+                pkceUtil.getCode_challenge(),
+                pkceUtil.getCode_challenge_method(),
+                pkceUtil.getState(),
+                pkceUtil.getCode_verifier()
+        };
+    }
+
+    @PostMapping("/access-token")
+    public String createToken(@RequestBody LichessCodeAndVerifier codeAndVerifier){
+        return lichessOAuthService.authenticate(codeAndVerifier.getCode(), codeAndVerifier.getVerifier());
     }
 }
