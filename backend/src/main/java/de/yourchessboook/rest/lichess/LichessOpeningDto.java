@@ -8,5 +8,4 @@ import lombok.Setter;
 public class LichessOpeningDto {
     private String eco;
     private String name;
-    private String fly;
 }
