@@ -24,7 +24,7 @@ public class GameEntity {
     private String moves;
 
     @Column
-    private boolean won;
+    private String winner;
 
     @Override
     public boolean equals(Object o) {

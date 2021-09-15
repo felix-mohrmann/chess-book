@@ -9,7 +9,7 @@ import java.util.List;
 
 public class LichessControllerMapper {
 
-    public LichessGames map(LichessGamesDto lichessGamesDto){
+    public LichessGames map(LichessGamesDto lichessGamesDto) {
         LichessGames lichessGames = new LichessGames();
         List<LichessGameDto> lichessGameDtos = lichessGamesDto.getLichessGameDtos();
         for (LichessGameDto lichessGameDto : lichessGameDtos) {
@@ -19,12 +19,13 @@ public class LichessControllerMapper {
         return lichessGames;
     }
 
-    public LichessGame map(LichessGameDto lichessGameDto){
+    public LichessGame map(LichessGameDto lichessGameDto) {
         return LichessGame.builder()
-                .id(lichessGameDto.getId())
                 .moves(lichessGameDto.getMoves())
+                .winner(lichessGameDto.getWinner())
                 .opening(lichessGameDto.getOpening().getName())
-                .status(lichessGameDto.getStatus()).build();
-                //.players(lichessGameDto.getPlayers()).build();
+                .status(lichessGameDto.getStatus())
+                .players(new String[]{lichessGameDto.getPlayers().getWhite().getUser().getName(),
+                        lichessGameDto.getPlayers().getBlack().getUser().getName()}).build();
     }
 }

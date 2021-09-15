@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class LichessService {
@@ -29,17 +30,25 @@ public class LichessService {
             return lichessGamesDto;
         }
 
-        add(lichessGameDtoList);
+        saveToDB(lichessGameDtoList);
 
         return lichessGamesDto;
     }
     
-    private void add(List<LichessGameDto> lichessGameDtoList){
+    private void saveToDB(List<LichessGameDto> lichessGameDtoList){
         for (LichessGameDto lichessGameDto : lichessGameDtoList) {
             GameEntity gameEntity = new GameEntity();
             gameEntity.setOpening(lichessGameDto.getOpening().getName());
             gameEntity.setMoves(lichessGameDto.getMoves());
+            gameEntity.setWinner(evaluate(lichessGameDto.getWinner(), lichessGameDto.getPlayers().getWhite().getUser().getName(), lichessGameDto.getPlayers().getBlack().getUser().getName()));
             gameRepository.save(gameEntity);
         }
+    }
+
+    private String evaluate(String winner, String white, String black){
+        if(Objects.equals(winner, "white")){
+            return white;
+        }
+        return black;
     }
 }
