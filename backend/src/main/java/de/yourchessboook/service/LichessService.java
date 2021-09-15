@@ -37,7 +37,7 @@ public class LichessService {
     private void add(List<LichessGameDto> lichessGameDtoList){
         for (LichessGameDto lichessGameDto : lichessGameDtoList) {
             GameEntity gameEntity = new GameEntity();
-            gameEntity.setOpening(lichessGameDto.getOpening());
+            gameEntity.setOpening(lichessGameDto.getOpening().getName());
             gameEntity.setMoves(lichessGameDto.getMoves());
             gameRepository.save(gameEntity);
         }

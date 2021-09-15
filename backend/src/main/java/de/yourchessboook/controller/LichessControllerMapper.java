@@ -23,8 +23,8 @@ public class LichessControllerMapper {
         return LichessGame.builder()
                 .id(lichessGameDto.getId())
                 .moves(lichessGameDto.getMoves())
-                .opening(lichessGameDto.getOpening())
-                .status(lichessGameDto.getStatus())
-                .players(lichessGameDto.getPlayers()).build();
+                .opening(lichessGameDto.getOpening().getName())
+                .status(lichessGameDto.getStatus()).build();
+                //.players(lichessGameDto.getPlayers()).build();
     }
 }
