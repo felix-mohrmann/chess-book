@@ -24,7 +24,14 @@ public class GameEntity {
     private String moves;
 
     @Column
+    private String whitePlayer;
+
+    @Column
+    private String blackPlayer;
+
+    @Column
     private String winner;
+
 
     @Override
     public boolean equals(Object o) {
