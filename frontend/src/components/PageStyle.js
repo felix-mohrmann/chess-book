@@ -7,6 +7,6 @@ export default styled.div`
   background-color: var(--gray);
 
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content 1fr;
   place-items: center;
 `
