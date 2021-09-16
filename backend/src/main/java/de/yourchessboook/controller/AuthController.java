@@ -1,7 +1,7 @@
 package de.yourchessboook.controller;
 
 import de.yourchessboook.api.LichessCodeAndVerifier;
-import de.yourchessboook.service.PKCEUtil;
+import de.yourchessboook.oauth.PKCEUtil;
 import de.yourchessboook.service.LichessOAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

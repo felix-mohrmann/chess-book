@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 @ToString
 public class LichessGames {
-
     List<LichessGame> lichessGames = new LinkedList<>();
 
     public void addLichessGame(LichessGame lichessGame){

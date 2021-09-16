@@ -1,6 +1,5 @@
 package de.yourchessboook.api;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -11,7 +11,6 @@ import java.util.Objects;
 @Getter
 @Setter
 public class GameEntity {
-
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
@@ -31,7 +30,6 @@ public class GameEntity {
 
     @Column
     private String winner;
-
 
     @Override
     public boolean equals(Object o) {

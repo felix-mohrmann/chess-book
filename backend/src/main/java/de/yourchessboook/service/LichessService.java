@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.ResponseEntity.ok;
-
 @Service
 public class LichessService {
     private static final String DRAW = "draw";
