@@ -14,6 +14,7 @@ public class Opening {
     private int numWins;
     private int numDraw;
     private int numLosses;
+    private int totalGames;
     private double winPercentage;
     private double drawPercentage;
 }
