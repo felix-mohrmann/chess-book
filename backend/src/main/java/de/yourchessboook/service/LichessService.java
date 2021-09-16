@@ -79,8 +79,8 @@ public class LichessService {
 
         for (GameEntity gameEntity : gameEntityList) {
             String fullOpeningName = gameEntity.getOpening();
-            String openingName = fullOpeningName.substring(0, fullOpeningName.indexOf(":"));
-            System.out.println(openingName);
+            String[] splitName = fullOpeningName.split(": ");
+            String openingName = splitName[0];
 
             // if not existing: build new, according to win/loose/draw
             if (!present(username, unsortedOpeningList, gameEntity, openingName)) {
