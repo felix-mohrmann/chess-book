@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -28,11 +29,11 @@ public interface LichessController {
             value = "/games/{username}",
             produces = APPLICATION_JSON_VALUE
     )
-    ResponseEntity<LichessGames> getGames(@PathVariable ("username") String username);
+    ResponseEntity<LichessGames> fetchGames(@PathVariable ("username") String username);
 
-    @GetMapping("/white/{username}")
+    @GetMapping("/openings/white/{username}")
     ResponseEntity<Openings> getMostFrequentWhiteOpenings(@PathVariable ("username") String username);
 
-    @GetMapping("/black/{username}")
+    @GetMapping("/openings/black/{username}")
     ResponseEntity<Openings> getMostFrequentBlackOpenings(@PathVariable ("username") String username);
 }

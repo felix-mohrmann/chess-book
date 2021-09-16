@@ -27,7 +27,7 @@ public class LichessControllerImpl extends LichessControllerMapper implements Li
     }
 
     @Override
-    public ResponseEntity<LichessGames> getGames(String username) {
+    public ResponseEntity<LichessGames> fetchGames(String username) {
         LichessGamesDto lichessGamesDto = lichessService.getGames(username);
         LichessGames lichessGames = map(lichessGamesDto);
         return ok(lichessGames);
