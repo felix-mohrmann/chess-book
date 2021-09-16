@@ -1,5 +1,6 @@
 package de.yourchessboook.config;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.yourchessboook.rest.lichess.LichessGameDto;
 import de.yourchessboook.rest.lichess.LichessGamesDecoder;
@@ -41,7 +42,10 @@ public class LichessGamesDecodeTest {
                 .headers(emptyMap())
                 .build();
 
-        /*LichessGamesDecoder lichessGamesDecoder = new LichessGamesDecoder(new ObjectMapper());
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        LichessGamesDecoder lichessGamesDecoder = new LichessGamesDecoder(mapper);
         Object object = lichessGamesDecoder.decode(response, LichessGamesDto.class);
         assertTrue(object instanceof LichessGamesDto);
 
@@ -54,7 +58,7 @@ public class LichessGamesDecodeTest {
         assertNotNull(lichessGameDtoMap.get("DVEA7Avl"));
         assertNotNull(lichessGameDtoMap.get("SNS3xwSc"));
         assertNotNull(lichessGameDtoMap.get("NjLTEBKh"));
-        assertNotNull(lichessGameDtoMap.get("C2KM5Bgf"));*/
+        assertNotNull(lichessGameDtoMap.get("C2KM5Bgf"));
     }
 
     private File getLichessNdJsonFile() throws URISyntaxException {
