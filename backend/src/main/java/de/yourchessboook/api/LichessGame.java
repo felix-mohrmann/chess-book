@@ -12,7 +12,6 @@ import java.util.Map;
 @Builder
 @ToString
 public class LichessGame {
-
     private String status;
     private String opening;
     private String moves;

@@ -1,4 +1,4 @@
-package de.yourchessboook.service;
+package de.yourchessboook.oauth;
 
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,6 @@ import java.util.Random;
 @Getter
 @Service
 public class PKCEUtil {
-
     private final String code_verifier = generateRandomCodeVerifier();
 
     private final String code_challenge_method = "S256";
