@@ -1,7 +1,7 @@
 package de.yourchessboook.controller;
 
 import de.yourchessboook.api.LichessGames;
-import de.yourchessboook.api.Opening;
+import de.yourchessboook.model.OpeningModel;
 import de.yourchessboook.rest.lichess.LichessGamesDto;
 import de.yourchessboook.service.LichessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +33,14 @@ public class LichessControllerImpl extends LichessControllerMapper implements Li
     }
 
     @Override
-    public ResponseEntity<List<Opening>> getMostFrequentWhiteOpenings(String username) {
-        return lichessService.getMostFrequentWhiteOpenings(username);
+    public ResponseEntity<List<OpeningModel>> getMostFrequentWhiteOpenings(String username) {
+        List<OpeningModel> openingList = lichessService.getMostFrequentWhiteOpenings(username)
+
+        return ok();
     }
 
     @Override
-    public ResponseEntity<List<Opening>> getMostFrequentBlackOpenings(String username) {
-        return lichessService.getMostFrequentBlackOpenings(username);
+    public ResponseEntity<List<OpeningModel>> getMostFrequentBlackOpenings(String username) {
+        return ok(lichessService.getMostFrequentBlackOpenings(username));
     }
 }

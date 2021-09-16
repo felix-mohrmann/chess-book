@@ -1,13 +1,12 @@
 package de.yourchessboook.service;
 
-import de.yourchessboook.api.Opening;
+import de.yourchessboook.model.OpeningModel;
 import de.yourchessboook.model.GameEntity;
 import de.yourchessboook.repo.GameRepository;
 import de.yourchessboook.rest.lichess.LichessClient;
 import de.yourchessboook.rest.lichess.LichessGameDto;
 import de.yourchessboook.rest.lichess.LichessGamesDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @Service
 public class LichessService {
+    private static final String DRAW = "draw";
     private final LichessClient lichessClient;
     private final GameRepository gameRepository;
 
@@ -60,57 +60,44 @@ public class LichessService {
         } else if (Objects.equals(winner, "black")) {
             return black;
         } else {
-            return "draw";
+            return DRAW;
         }
     }
 
-    public ResponseEntity<List<Opening>> getMostFrequentWhiteOpenings(String username) {
+    public List<OpeningModel> getMostFrequentWhiteOpenings(String username) {
         List<GameEntity> gameEntityList = gameRepository.findAllByWhitePlayerIsOrderByOpening(username);
 
         return sortAndFilterGames(username, gameEntityList);
     }
 
-    public ResponseEntity<List<Opening>> getMostFrequentBlackOpenings(String username) {
+    public List<OpeningModel> getMostFrequentBlackOpenings(String username) {
         List<GameEntity> gameEntityList = gameRepository.findAllByBlackPlayerIsOrderByOpening(username);
 
         return sortAndFilterGames(username, gameEntityList);
     }
 
-    private ResponseEntity<List<Opening>> sortAndFilterGames(String username, List<GameEntity> gameEntityList) {
-        List<Opening> unsortedOpeningList = new ArrayList<>();
+    private List<OpeningModel> sortAndFilterGames(String username, List<GameEntity> gameEntityList) {
+        List<OpeningModel> unsortedOpeningList = new ArrayList<>();
 
         for (GameEntity gameEntity : gameEntityList) {
             String fullOpeningName = gameEntity.getOpening();
             String[] splitOpeningName = fullOpeningName.split(": ");
             String openingName = splitOpeningName[0]; //cut down to prefix
 
-            boolean found = false;
-            for (Opening opening : unsortedOpeningList) { //opening existing?
-                if (opening.getName().equals(openingName)) {
-                    found = true;
-                    if (gameEntity.getWinner().equals(username)) {
-                        opening.win();
-                    } else if (gameEntity.getWinner().equals("draw")) {
-                        opening.draw();
-                    } else {
-                        opening.loose();
-                    }
-                }
-            }
-
-            if (!found) { // if not existing: build new, according to win/loose/draw
+            // if not existing: build new, according to win/loose/draw
+            if (!present(username, unsortedOpeningList, gameEntity, openingName)) {
                 if (gameEntity.getWinner().equals(username)) {
-                    unsortedOpeningList.add(Opening.builder()
+                    unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
                             .numWins(1)
                             .build());
-                } else if (gameEntity.getWinner().equals("draw")) {
-                    unsortedOpeningList.add(Opening.builder()
+                } else if (gameEntity.getWinner().equals(DRAW)) {
+                    unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
                             .numDraw(1)
                             .build());
                 } else {
-                    unsortedOpeningList.add(Opening.builder()
+                    unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
                             .numLosses(1)
                             .build());
@@ -119,15 +106,33 @@ public class LichessService {
         }
 
         //sort opening list depending on most played
-        List<Opening> sortedOpeningList = unsortedOpeningList.stream()
-                .sorted(Comparator.comparing(Opening::getTotalGames).reversed())
+        List<OpeningModel> sortedOpeningList = unsortedOpeningList.stream()
+                .sorted(Comparator.comparing(OpeningModel::getTotalGames).reversed())
                 .collect(Collectors.toList());
 
         //Cut down to top 3
-        while(sortedOpeningList.size() != 3){
+        while(sortedOpeningList.size() > 3){
             sortedOpeningList.remove(3);
         }
 
-        return ok(sortedOpeningList);
+        return sortedOpeningList;
+    }
+
+    private boolean present(String username, List<OpeningModel> unsortedOpeningList, GameEntity gameEntity, String openingName) {
+        for (OpeningModel opening : unsortedOpeningList) { //opening existing?
+            if (opening.getName().equals(openingName)) {
+                if (gameEntity.getWinner().equals(username)) {
+                    opening.win();
+                    return true;
+                } else if (gameEntity.getWinner().equals(DRAW)) {
+                    opening.draw();
+                    return true;
+                } else {
+                    opening.loose();
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
