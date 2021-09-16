@@ -1,6 +1,7 @@
 package de.yourchessboook.controller;
 
 import de.yourchessboook.api.LichessGames;
+import de.yourchessboook.api.Openings;
 import de.yourchessboook.model.OpeningModel;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,8 +31,8 @@ public interface LichessController {
     ResponseEntity<LichessGames> getGames(@PathVariable ("username") String username);
 
     @GetMapping("/white/{username}")
-    ResponseEntity<List<OpeningModel>> getMostFrequentWhiteOpenings(@PathVariable ("username") String username);
+    ResponseEntity<Openings> getMostFrequentWhiteOpenings(@PathVariable ("username") String username);
 
     @GetMapping("/black/{username}")
-    ResponseEntity<List<OpeningModel>> getMostFrequentBlackOpenings(@PathVariable ("username") String username);
+    ResponseEntity<Openings> getMostFrequentBlackOpenings(@PathVariable ("username") String username);
 }

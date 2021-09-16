@@ -1,4 +1,4 @@
-package de.yourchessboook.api;
+package de.yourchessboook.model;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Opening {
+public class OpeningModel {
     private String name;
     private int numWins = 0;
     private int numDraw = 0;

@@ -1,6 +1,7 @@
 package de.yourchessboook.controller;
 
 import de.yourchessboook.api.LichessGames;
+import de.yourchessboook.api.Openings;
 import de.yourchessboook.model.OpeningModel;
 import de.yourchessboook.rest.lichess.LichessGamesDto;
 import de.yourchessboook.service.LichessService;
@@ -33,14 +34,16 @@ public class LichessControllerImpl extends LichessControllerMapper implements Li
     }
 
     @Override
-    public ResponseEntity<List<OpeningModel>> getMostFrequentWhiteOpenings(String username) {
-        List<OpeningModel> openingList = lichessService.getMostFrequentWhiteOpenings(username)
-
-        return ok();
+    public ResponseEntity<Openings> getMostFrequentWhiteOpenings(String username) {
+        List<OpeningModel> openingList = lichessService.getMostFrequentWhiteOpenings(username);
+        Openings openings = map(openingList);
+        return ok(openings);
     }
 
     @Override
-    public ResponseEntity<List<OpeningModel>> getMostFrequentBlackOpenings(String username) {
-        return ok(lichessService.getMostFrequentBlackOpenings(username));
+    public ResponseEntity<Openings> getMostFrequentBlackOpenings(String username) {
+        List<OpeningModel> openingList = lichessService.getMostFrequentBlackOpenings(username);
+        Openings openings = map(openingList);
+        return ok(openings);
     }
 }
