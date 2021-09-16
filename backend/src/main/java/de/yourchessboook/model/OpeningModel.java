@@ -13,27 +13,27 @@ public class OpeningModel {
     private int numDraw = 0;
     private int numLosses = 0;
 
-    public void win(){
+    public void win() {
         numWins++;
     }
 
-    public void loose(){
+    public void loose() {
         numLosses++;
     }
 
-    public void draw(){
+    public void draw() {
         numDraw++;
     }
 
     public double getWinningPercentage() {
-        return getNumWins()/getTotalGames();
+        return (double) getNumWins() / getTotalGames();
     }
 
     public double getDrawPercentage() {
-        return getNumDraw()/getTotalGames();
+        return (double) getNumDraw() / getTotalGames();
     }
 
-    public double getTotalGames(){
+    public int getTotalGames() {
         return getNumWins() + getNumDraw() + getNumLosses();
     }
 }
