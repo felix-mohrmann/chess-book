@@ -11,7 +11,6 @@ import java.util.Objects;
 @Getter
 @Setter
 public class GameEntity {
-
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
@@ -22,6 +21,15 @@ public class GameEntity {
 
     @Column(length = 8000)
     private String moves;
+
+    @Column
+    private String whitePlayer;
+
+    @Column
+    private String blackPlayer;
+
+    @Column
+    private String winner;
 
     @Override
     public boolean equals(Object o) {

@@ -2,6 +2,9 @@ package de.yourchessboook.controller;
 
 import de.yourchessboook.api.LichessGame;
 import de.yourchessboook.api.LichessGames;
+import de.yourchessboook.api.Opening;
+import de.yourchessboook.api.Openings;
+import de.yourchessboook.model.OpeningModel;
 import de.yourchessboook.rest.lichess.LichessGameDto;
 import de.yourchessboook.rest.lichess.LichessGamesDto;
 
@@ -9,7 +12,7 @@ import java.util.List;
 
 public class LichessControllerMapper {
 
-    public LichessGames map(LichessGamesDto lichessGamesDto){
+    public LichessGames map(LichessGamesDto lichessGamesDto) {
         LichessGames lichessGames = new LichessGames();
         List<LichessGameDto> lichessGameDtos = lichessGamesDto.getLichessGameDtos();
         for (LichessGameDto lichessGameDto : lichessGameDtos) {
@@ -19,12 +22,32 @@ public class LichessControllerMapper {
         return lichessGames;
     }
 
-    public LichessGame map(LichessGameDto lichessGameDto){
+    public LichessGame map(LichessGameDto lichessGameDto) {
         return LichessGame.builder()
-                .id(lichessGameDto.getId())
                 .moves(lichessGameDto.getMoves())
-                .opening(lichessGameDto.getOpening())
+                .winner(lichessGameDto.getWinner())
+                .opening(lichessGameDto.getOpening().getName())
                 .status(lichessGameDto.getStatus())
-                .players(lichessGameDto.getPlayers()).build();
+                .players(new String[]{lichessGameDto.getPlayers().getWhite().getUser().getName(),
+                        lichessGameDto.getPlayers().getBlack().getUser().getName()}).build();
+    }
+
+    public Openings map(List<OpeningModel> openingList) {
+        Openings openings = new Openings();
+        for (OpeningModel openingModel : openingList) {
+            openings.addOpening(map(openingModel));
+        }
+        return openings;
+    }
+
+    private Opening map(OpeningModel openingModel) {
+        return Opening.builder()
+                .name(openingModel.getName())
+                .numWins(openingModel.getNumWins())
+                .numDraw(openingModel.getNumDraw())
+                .numLosses(openingModel.getNumLosses())
+                .totalGames(openingModel.getTotalGames())
+                .winPercentage(openingModel.getWinningPercentage())
+                .drawPercentage(openingModel.getDrawPercentage()).build();
     }
 }

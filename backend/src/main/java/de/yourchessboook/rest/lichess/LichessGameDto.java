@@ -6,10 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LichessGameDto {
-
     private String id;
     private String status;
-    private String opening;
+    private LichessOpeningDto opening;
     private String moves;
-    private String players;
+    private LichessPlayersDto players;
+    private String winner;
 }
