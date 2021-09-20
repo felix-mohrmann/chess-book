@@ -3,6 +3,7 @@ package de.yourchessboook.service;
 import de.yourchessboook.model.OpeningModel;
 import de.yourchessboook.model.GameEntity;
 import de.yourchessboook.repo.GameRepository;
+import de.yourchessboook.repo.OpeningRepository;
 import de.yourchessboook.rest.lichess.LichessClient;
 import de.yourchessboook.rest.lichess.LichessGameDto;
 import de.yourchessboook.rest.lichess.LichessGamesDto;
@@ -20,11 +21,13 @@ public class LichessService {
     private static final String DRAW = "draw";
     private final LichessClient lichessClient;
     private final GameRepository gameRepository;
+    private final OpeningRepository openingRepository;
 
     @Autowired
-    public LichessService(LichessClient lichessClient, GameRepository gameRepository) {
+    public LichessService(LichessClient lichessClient, GameRepository gameRepository, OpeningRepository openingRepository) {
         this.lichessClient = lichessClient;
         this.gameRepository = gameRepository;
+        this.openingRepository = openingRepository;
     }
 
     public LichessGamesDto getGames(String username) {
@@ -87,16 +90,19 @@ public class LichessService {
                 if (gameEntity.getWinner().equals(username)) {
                     unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
+                            .fen(openingRepository.findByName(openingName).isPresent() ? openingRepository.findByName(openingName).get().getFen() : "not Found")
                             .numWins(1)
                             .build());
                 } else if (gameEntity.getWinner().equals(DRAW)) {
                     unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
+                            .fen(openingRepository.findByName(openingName).isPresent() ? openingRepository.findByName(openingName).get().getFen() : "not Found")
                             .numDraw(1)
                             .build());
                 } else {
                     unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
+                            .fen(openingRepository.findByName(openingName).isPresent() ? openingRepository.findByName(openingName).get().getFen() : "not Found")
                             .numLosses(1)
                             .build());
                 }
@@ -109,7 +115,7 @@ public class LichessService {
                 .collect(Collectors.toList());
 
         //Cut down to top 3
-        while(sortedOpeningList.size() > 3){
+        while (sortedOpeningList.size() > 3) {
             sortedOpeningList.remove(3);
         }
 

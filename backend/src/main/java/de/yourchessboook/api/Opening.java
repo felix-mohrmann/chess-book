@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class Opening {
     private String name;
+    private String fen;
     private int numWins;
     private int numDraw;
     private int numLosses;

@@ -43,6 +43,7 @@ public class LichessControllerMapper {
     private Opening map(OpeningModel openingModel) {
         return Opening.builder()
                 .name(openingModel.getName())
+                .fen(openingModel.getFen())
                 .numWins(openingModel.getNumWins())
                 .numDraw(openingModel.getNumDraw())
                 .numLosses(openingModel.getNumLosses())
