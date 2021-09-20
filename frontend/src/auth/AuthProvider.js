@@ -6,6 +6,7 @@ import { getParams } from '../service/chess-book-api'
 export default function AuthProvider({ children }) {
   const [params, setParams] = useState()
   const [token, setToken] = useState()
+  const [username, setUsername] = useState()
 
   useEffect(() => {
     if (!params && localStorage.getItem('init') === 'yes') {
@@ -22,7 +23,9 @@ export default function AuthProvider({ children }) {
     )
 
   return (
-    <AuthContext.Provider value={{ params, token, loginWithLichess }}>
+    <AuthContext.Provider
+      value={{ params, token, loginWithLichess, username, setUsername }}
+    >
       {children}
     </AuthContext.Provider>
   )

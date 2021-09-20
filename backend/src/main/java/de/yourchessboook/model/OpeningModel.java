@@ -26,11 +26,11 @@ public class OpeningModel {
     }
 
     public double getWinningPercentage() {
-        return (double) getNumWins() / getTotalGames();
+        return Math.round((double) getNumWins() / getTotalGames() * 100);
     }
 
     public double getDrawPercentage() {
-        return (double) getNumDraw() / getTotalGames();
+        return Math.round((double) getNumDraw() / getTotalGames() * 100);
     }
 
     public int getTotalGames() {

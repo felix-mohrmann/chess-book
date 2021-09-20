@@ -5,7 +5,7 @@ import { getProfile } from '../service/lichess-api'
 import { useAuth } from '../auth/AuthProvider'
 
 export default function Profile() {
-  const { token } = useAuth()
+  const { token, setUsername } = useAuth()
   const [profile, setProfile] = useState()
 
   useEffect(() => {
@@ -15,6 +15,10 @@ export default function Profile() {
         .catch(error => console.error(error))
     }
   }, [token])
+
+  if (profile) {
+    setUsername(profile.username)
+  }
 
   return (
     <PageStyle>

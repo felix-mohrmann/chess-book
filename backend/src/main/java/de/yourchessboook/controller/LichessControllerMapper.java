@@ -46,6 +46,7 @@ public class LichessControllerMapper {
                 .numWins(openingModel.getNumWins())
                 .numDraw(openingModel.getNumDraw())
                 .numLosses(openingModel.getNumLosses())
+                .totalGames(openingModel.getTotalGames())
                 .winPercentage(openingModel.getWinningPercentage())
                 .drawPercentage(openingModel.getDrawPercentage()).build();
     }
