@@ -12,3 +12,6 @@ export const getBlackOpenings = name =>
   axios
     .get(`/api/chess-book/openings/black/${name}`)
     .then(response => response.data)
+
+export const getOpeningFEN = name =>
+  axios.get(`/api/chess-book/opening/${name}`).then(response => response.data)

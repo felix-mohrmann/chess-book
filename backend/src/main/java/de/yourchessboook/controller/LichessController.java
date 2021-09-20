@@ -31,9 +31,11 @@ public interface LichessController {
     )
     ResponseEntity<LichessGames> fetchGames(@PathVariable ("username") String username);
 
+    @Operation(summary = "Loading Top3 most played openings with White from database.")
     @GetMapping("/openings/white/{username}")
     ResponseEntity<Openings> getMostFrequentWhiteOpenings(@PathVariable ("username") String username);
 
+    @Operation(summary = "Loading Top3 most played openings with Black from database.")
     @GetMapping("/openings/black/{username}")
     ResponseEntity<Openings> getMostFrequentBlackOpenings(@PathVariable ("username") String username);
 }
