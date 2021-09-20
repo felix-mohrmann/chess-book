@@ -4,6 +4,7 @@ import styled from 'styled-components/macro'
 import { useEffect, useState } from 'react'
 import { useAuth } from '../auth/AuthProvider'
 import { getBlackOpenings, getWhiteOpenings } from '../service/chess-book-api'
+import OpeningCard from '../components/OpeningCard'
 
 export default function Openings() {
   const { username } = useAuth()
@@ -25,32 +26,14 @@ export default function Openings() {
       {whiteOpenings && blackOpenings && (
         <Wrapper>
           <h1>White</h1>
-          <h3>
-            1. {whiteOpenings[0].name} ({whiteOpenings[0].totalGames} Games) -
-            WR: {whiteOpenings[0].winPercentage}%
-          </h3>
-          <h3>
-            2. {whiteOpenings[1].name} ({whiteOpenings[1].totalGames} Games) -
-            WR: {whiteOpenings[1].winPercentage}%
-          </h3>
-          <h3>
-            3. {whiteOpenings[2].name} ({whiteOpenings[2].totalGames} Games) -
-            WR: {whiteOpenings[2].winPercentage}%
-          </h3>
+          {whiteOpenings.map((opening, index) => (
+            <OpeningCard key={opening.name} opening={opening} index={index} />
+          ))}
           <br />
           <h1>Black</h1>
-          <h3>
-            1. {blackOpenings[0].name} ({blackOpenings[0].totalGames} Games) WR:{' '}
-            {blackOpenings[0].winPercentage}%
-          </h3>
-          <h3>
-            2. {blackOpenings[1].name} ({blackOpenings[1].totalGames} Games) WR:{' '}
-            {blackOpenings[1].winPercentage}%
-          </h3>
-          <h3>
-            3. {blackOpenings[2].name} ({blackOpenings[2].totalGames} Games) WR:{' '}
-            {blackOpenings[2].winPercentage}%
-          </h3>
+          {blackOpenings.map((opening, index) => (
+            <OpeningCard key={opening.name} opening={opening} index={index} />
+          ))}
         </Wrapper>
       )}
     </PageStyle>
