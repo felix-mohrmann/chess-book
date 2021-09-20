@@ -5,6 +5,7 @@ import Chessboard from 'chessboardjsx'
 
 export default function Opening({ opening }) {
   const { openingName } = useParams()
+
   return (
     <PageStyle>
       <Navbar />
