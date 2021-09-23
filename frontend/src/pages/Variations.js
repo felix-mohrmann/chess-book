@@ -61,12 +61,24 @@ class HumanVsHuman extends Component {
     })
   }
 
+  resetBoard = () => {
+    this.game.reset()
+    this.setState({
+      fen: 'start',
+      pieceSquare: '',
+      square: '',
+      history: [],
+    })
+  }
+
   render() {
-    const { fen } = this.state
+    const { fen, history } = this.state
+    console.log(history, fen)
     return this.props.children({
       position: fen,
       onDrop: this.onDrop,
       onSquareClick: this.onSquareClick,
+      resetBoard: this.resetBoard,
     })
   }
 }
@@ -75,33 +87,39 @@ export default function Variations() {
   return (
     <PageStyle>
       <Navbar />
-      <Wrapper>
-        <div class="Board">
-          <HumanVsHuman>
-            {({ position, onDrop, onSquareClick }) => (
-              <Chessboard
-                position={position}
-                onDrop={onDrop}
-                onSquareClick={onSquareClick}
-              />
-            )}
-          </HumanVsHuman>
-        </div>
-        <div class="Buttons">
-          <ButtonGroup orientation="vertical">
-            <Button
-              startIcon={<BookmarkOutlinedIcon />}
-              variant="contained"
-              color="secondary"
-            >
-              Save Variation
-            </Button>
-            <Button startIcon={<DeleteIcon />} variant="contained">
-              Reset Board
-            </Button>
-          </ButtonGroup>
-        </div>
-      </Wrapper>
+      <div>
+        <HumanVsHuman>
+          {({ position, onDrop, onSquareClick, resetBoard }) => (
+            <Wrapper>
+              <div class="Board">
+                <Chessboard
+                  position={position}
+                  onDrop={onDrop}
+                  onSquareClick={onSquareClick}
+                />
+              </div>
+              <div className="Buttons">
+                <ButtonGroup orientation="vertical">
+                  <Button
+                    startIcon={<BookmarkOutlinedIcon />}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    Save Variation
+                  </Button>
+                  <Button
+                    startIcon={<DeleteIcon />}
+                    variant="contained"
+                    onClick={resetBoard}
+                  >
+                    Reset Board
+                  </Button>
+                </ButtonGroup>
+              </div>
+            </Wrapper>
+          )}
+        </HumanVsHuman>
+      </div>
     </PageStyle>
   )
 }
@@ -117,6 +135,7 @@ const Wrapper = styled.div`
   .Board {
     grid-area: Board;
   }
+
   .Buttons {
     grid-area: Buttons;
     align-self: center;
