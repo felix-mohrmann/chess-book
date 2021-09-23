@@ -3,6 +3,11 @@ import PageStyle from '../components/PageStyle'
 import Chessboard from 'chessboardjsx'
 import { Component } from 'react'
 import PropTypes from 'prop-types'
+import Button from '@mui/material/Button'
+import { ButtonGroup } from '@mui/material'
+import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined'
+import DeleteIcon from '@mui/icons-material/Delete'
+import styled from 'styled-components/macro'
 
 class HumanVsHuman extends Component {
   static propTypes = { children: PropTypes.func }
@@ -70,15 +75,51 @@ export default function Variations() {
   return (
     <PageStyle>
       <Navbar />
-      <HumanVsHuman>
-        {({ position, onDrop, onSquareClick }) => (
-          <Chessboard
-            position={position}
-            onDrop={onDrop}
-            onSquareClick={onSquareClick}
-          />
-        )}
-      </HumanVsHuman>
+      <Wrapper>
+        <div class="Board">
+          <HumanVsHuman>
+            {({ position, onDrop, onSquareClick }) => (
+              <Chessboard
+                position={position}
+                onDrop={onDrop}
+                onSquareClick={onSquareClick}
+              />
+            )}
+          </HumanVsHuman>
+        </div>
+        <div class="Buttons">
+          <ButtonGroup orientation="vertical">
+            <Button
+              startIcon={<BookmarkOutlinedIcon />}
+              variant="contained"
+              color="secondary"
+            >
+              Save Variation
+            </Button>
+            <Button startIcon={<DeleteIcon />} variant="contained">
+              Reset Board
+            </Button>
+          </ButtonGroup>
+        </div>
+      </Wrapper>
     </PageStyle>
   )
 }
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template: repeat(3, 1fr) / 1.3fr 0.7fr;
+  grid-template-areas:
+    'Board .'
+    'Board Buttons'
+    'Board .';
+
+  .Board {
+    grid-area: Board;
+  }
+  .Buttons {
+    grid-area: Buttons;
+    align-self: center;
+    justify-self: center;
+  }
+`
