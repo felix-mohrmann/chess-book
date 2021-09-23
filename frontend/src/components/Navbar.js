@@ -13,6 +13,7 @@ export default function Navbar() {
       )}
       {token && <NavLink to="/profile">Profile</NavLink>}
       {token && <NavLink to="/openings">Openings</NavLink>}
+      {token && <NavLink to="/variations">Variations</NavLink>}
     </Wrapper>
   )
 }
