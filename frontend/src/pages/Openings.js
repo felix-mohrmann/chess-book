@@ -27,12 +27,22 @@ export default function Openings() {
         <Wrapper>
           <h1>White</h1>
           {whiteOpenings.map((opening, index) => (
-            <OpeningCard key={opening.name} opening={opening} index={index} />
+            <OpeningCard
+              key={opening.name}
+              opening={opening}
+              index={index}
+              orientation="white"
+            />
           ))}
           <br />
           <h1>Black</h1>
           {blackOpenings.map((opening, index) => (
-            <OpeningCard key={opening.name} opening={opening} index={index} />
+            <OpeningCard
+              key={opening.name}
+              opening={opening}
+              index={index}
+              orientation="black"
+            />
           ))}
         </Wrapper>
       )}

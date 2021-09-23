@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar'
 import { useAuth } from '../auth/AuthProvider'
 import { useEffect } from 'react'
 import LinkButton from '../components/LinkButton'
-import Chessboard from 'chessboardjsx'
 
 export default function Login() {
   const { params } = useAuth()
