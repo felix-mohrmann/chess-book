@@ -8,6 +8,7 @@ import { ButtonGroup } from '@mui/material'
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined'
 import DeleteIcon from '@mui/icons-material/Delete'
 import styled from 'styled-components/macro'
+import { saveVariation } from '../service/chess-book-api'
 
 class HumanVsHuman extends Component {
   static propTypes = { children: PropTypes.func }
@@ -37,7 +38,7 @@ class HumanVsHuman extends Component {
     if (move === null) return
     this.setState({
       fen: this.game.fen(),
-      history: this.game.history({ verbose: true }),
+      history: this.game.history(),
     })
   }
 
@@ -56,7 +57,7 @@ class HumanVsHuman extends Component {
     if (move === null) return
     this.setState({
       fen: this.game.fen(),
-      history: this.game.history({ verbose: true }),
+      history: this.game.history(),
       pieceSquare: '',
     })
   }
@@ -71,6 +72,10 @@ class HumanVsHuman extends Component {
     })
   }
 
+  saveVariation = () => {
+    saveVariation(this.state.history).catch(error => console.error(error))
+  }
+
   render() {
     const { fen, history } = this.state
     console.log(history, fen)
@@ -79,6 +84,7 @@ class HumanVsHuman extends Component {
       onDrop: this.onDrop,
       onSquareClick: this.onSquareClick,
       resetBoard: this.resetBoard,
+      saveVariation: this.saveVariation,
     })
   }
 }
@@ -89,7 +95,7 @@ export default function Variations() {
       <Navbar />
       <div>
         <HumanVsHuman>
-          {({ position, onDrop, onSquareClick, resetBoard }) => (
+          {({ position, onDrop, onSquareClick, resetBoard, saveVariation }) => (
             <Wrapper>
               <div class="Board">
                 <Chessboard
@@ -104,6 +110,7 @@ export default function Variations() {
                     startIcon={<BookmarkOutlinedIcon />}
                     variant="contained"
                     color="secondary"
+                    onClick={saveVariation}
                   >
                     Save Variation
                   </Button>
