@@ -15,6 +15,11 @@ export default styled.button`
     color: var(--neutral-light);
   }
 
+  a:hover {
+    background-color: var(--neutral-light);
+    color: var(--accent);
+  }
+
   ${props =>
     props.secondary &&
     css`
