@@ -5,6 +5,7 @@ import Openings from './pages/Openings'
 import LichessRedirect from './auth/LichessRedirect'
 import AuthProvider from './auth/AuthProvider'
 import Opening from './pages/Opening'
+import Variations from './pages/Variations'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             path="/openings/:openingName/:orientation/:fen1/:fen2/:fen3/:fen4/:fen5/:fen6/:fen7/:fen8"
             component={Opening}
           />
+          <Route path="/variations" component={Variations} />
           <Route path="/openings" component={Openings} />
         </Switch>
       </Router>

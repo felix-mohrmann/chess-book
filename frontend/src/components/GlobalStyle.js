@@ -4,8 +4,8 @@ export default createGlobalStyle`
   :root {
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --accent: #e9967a;
-    --neutral-light: #efefef;
+    --accent: #b48963;
+    --neutral-light: #efdab5;
 
     --size-xs: 4px;
     --size-s: 8px;

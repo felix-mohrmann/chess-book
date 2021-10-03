@@ -21,7 +21,6 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @Api(
         tags = LICHESS_CONTROLLER
 )
-@RequestMapping
 public interface LichessController {
 
     @Operation(summary = "Fetching all user games from Lichess.")
