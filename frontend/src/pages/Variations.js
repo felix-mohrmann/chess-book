@@ -104,21 +104,20 @@ class HumanVsHuman extends Component {
       history: [],
     })
 
-    for (let i = 0; i < variation.moveArray.length; ) {
-      this.game.move(variation.moveArray[i])
-      this.setState({
-        fen: this.game.fen(),
-        history: this.game.history(),
-        pieceSquare: '',
-      })
+    for (let i = 0; i < variation.moveArray.length; i++) {
       setTimeout(() => {
-        i++
-      }, 1000)
+        this.game.move(variation.moveArray[i])
+        this.setState({
+          fen: this.game.fen(),
+          history: this.game.history(),
+        })
+      }, 500)
     }
   }
 
   render() {
-    const { fen, orientation } = this.state
+    const { fen, history, orientation } = this.state
+    console.log(history)
     return this.props.children({
       position: fen,
       onDrop: this.onDrop,
