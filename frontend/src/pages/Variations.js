@@ -65,7 +65,7 @@ class HumanVsHuman extends Component {
     })
   }
 
-  swapOrientation = () => {
+  flipOrientation = () => {
     if (this.state.orientation === 'white') {
       this.setState({
         orientation: 'black',
@@ -111,7 +111,7 @@ class HumanVsHuman extends Component {
           fen: this.game.fen(),
           history: this.game.history(),
         })
-      }, 500)
+      }, 2000)
     }
   }
 
@@ -123,7 +123,7 @@ class HumanVsHuman extends Component {
       onDrop: this.onDrop,
       orientation: orientation,
       onSquareClick: this.onSquareClick,
-      swapOrientation: this.swapOrientation,
+      flipOrientation: this.flipOrientation,
       resetBoard: this.resetBoard,
       saveVariation: this.saveVariation,
       showVariation: this.showVariation,
@@ -162,7 +162,7 @@ export default function Variations() {
         <HumanVsHuman>
           {({
             orientation,
-            swapOrientation,
+            flipOrientation,
             position,
             onDrop,
             onSquareClick,
@@ -214,9 +214,9 @@ export default function Variations() {
                     <Button
                       startIcon={<SwapVertIcon />}
                       type="button"
-                      onClick={swapOrientation}
+                      onClick={flipOrientation}
                     >
-                      Swap
+                      Flip
                     </Button>
                     <Button
                       startIcon={<DeleteIcon />}
