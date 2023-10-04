@@ -1,10 +1,10 @@
-import { Redirect, useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from './AuthProvider'
 import { useEffect, useState } from 'react'
 import PageStyle from '../components/PageStyle'
 import Header from '../components/Header'
 
-export default function LichessRedirect() {
+export default function LichessNavigate() {
   const location = useLocation()
   const query = location.search
   const search = new URLSearchParams(query)
@@ -29,5 +29,5 @@ export default function LichessRedirect() {
     )
   }
 
-  return <Redirect to="/profile" />
+  return <Navigate to="/profile" />
 }
