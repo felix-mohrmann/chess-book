@@ -17,7 +17,7 @@
     <description>backend</description>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
         <feign.version>10.12</feign.version>
     </properties>
 
@@ -30,7 +30,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.20</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

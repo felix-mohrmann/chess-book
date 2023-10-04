@@ -1,7 +1,6 @@
 package de.yourchessboook.service;
 
 import de.yourchessboook.api.Variant;
-import de.yourchessboook.api.Variants;
 import de.yourchessboook.model.VariantEntity;
 import de.yourchessboook.repo.VariantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VariationsService {

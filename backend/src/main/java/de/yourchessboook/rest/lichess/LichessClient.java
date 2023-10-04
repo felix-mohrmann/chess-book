@@ -4,8 +4,6 @@ import de.yourchessboook.config.LichessClientConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class LichessClient {
 
@@ -18,7 +16,7 @@ public class LichessClient {
         this.lichessAPI = lichessAPI;
     }
 
-    public LichessGamesDto getGames(String name){
+    public LichessGamesDto getGames(String name) {
         return lichessAPI.getGames(getAccessToken(), name);
     }
 

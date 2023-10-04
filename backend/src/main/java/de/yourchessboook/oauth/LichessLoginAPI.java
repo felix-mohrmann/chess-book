@@ -11,12 +11,10 @@ import org.springframework.web.client.RestTemplate;
 public class LichessLoginAPI {
     private final static String LICHESS_LOGIN_URL = "https://lichess.org/api/token";
     private final RestTemplate restTemplate;
-    private final PKCEUtil pkceUtil;
 
     @Autowired
     public LichessLoginAPI(RestTemplate restTemplate, PKCEUtil pkceUtil) {
         this.restTemplate = restTemplate;
-        this.pkceUtil = pkceUtil;
     }
 
     public LichessAccessTokenResponseDto getToken(String code, String verifier) {
