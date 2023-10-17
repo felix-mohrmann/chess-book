@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:8080'
 
 export const getParams = () =>
   axios('/api/chess-book/auth/params').then(response => response.data)

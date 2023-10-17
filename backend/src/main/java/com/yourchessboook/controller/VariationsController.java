@@ -14,6 +14,7 @@ import java.util.List;
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/variations")
 public class VariationsController extends VariantsControllerMapper {
     private final VariationsService variationsService;
