@@ -10,7 +10,7 @@ version: "2.1"
 
 services:
   chess-book-postgres:
-    image: postgres:12.4
+    image: postgres:latest
     container_name: chess-book
     mem_limit: 50m
     environment:
