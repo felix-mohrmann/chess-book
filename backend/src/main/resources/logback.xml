@@ -10,7 +10,7 @@
     <logger name="org.springframework" level="INFO"/>
 
     <!-- Set level = DEBUG to get feign http output -->
-    <logger name="de.yourchessboook" level="INFO"/>
+    <logger name="com.yourchessboook" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
