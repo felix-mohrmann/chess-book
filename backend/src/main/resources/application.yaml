@@ -4,9 +4,9 @@ spring:
   application:
     name: chess-book
   datasource:
-    url: jdbc:${profile.datasource.url}
-    username: ${profile.datasource.user}
-    password: ${profile.datasource.pass}
+    url: jdbc:postgresql://localhost:5432/chess-book
+    username: admin
+    password: 123
     driver-class-name: org.postgresql.Driver
   jpa:
     generate-ddl: true

@@ -5,5 +5,5 @@ profile:
     pass: 123
 
 chess-book:
-    user-service:
-      avatar-url: "http://docker.de"
+  user-service:
+    avatar-url: 'http://docker.com'
