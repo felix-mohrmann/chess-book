@@ -10,9 +10,9 @@ import lombok.Setter;
 public class OpeningModel {
     private String name;
     private String fen;
-    private int numWins = 0;
-    private int numDraw = 0;
-    private int numLosses = 0;
+    private int numWins;
+    private int numDraw;
+    private int numLosses;
 
     public void win() {
         numWins++;
