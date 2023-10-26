@@ -1,4 +1,4 @@
-package de.yourchessboook.model;
+package com.yourchessboook.model;
 
 import lombok.Getter;
 import lombok.Setter;

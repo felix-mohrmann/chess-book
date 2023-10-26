@@ -1,4 +1,4 @@
-package de.yourchessboook.api;
+package com.yourchessboook.api;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,5 +13,7 @@ import java.util.List;
 public class Variants {
     private List<Variant> variants = new LinkedList<>();
 
-    public void add(Variant variant){this.variants.add(variant);}
+    public void add(Variant variant) {
+        this.variants.add(variant);
+    }
 }

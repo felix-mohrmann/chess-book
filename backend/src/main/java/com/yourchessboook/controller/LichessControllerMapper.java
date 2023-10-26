@@ -1,14 +1,14 @@
-package de.yourchessboook.controller;
-
-import de.yourchessboook.api.LichessGame;
-import de.yourchessboook.api.LichessGames;
-import de.yourchessboook.api.Opening;
-import de.yourchessboook.api.Openings;
-import de.yourchessboook.model.OpeningModel;
-import de.yourchessboook.rest.lichess.LichessGameDto;
-import de.yourchessboook.rest.lichess.LichessGamesDto;
+package com.yourchessboook.controller;
 
 import java.util.List;
+
+import com.yourchessboook.api.LichessGame;
+import com.yourchessboook.api.LichessGames;
+import com.yourchessboook.api.Opening;
+import com.yourchessboook.api.Openings;
+import com.yourchessboook.model.OpeningModel;
+import com.yourchessboook.rest.lichess.LichessGameDto;
+import com.yourchessboook.rest.lichess.LichessGamesDto;
 
 public class LichessControllerMapper {
 
@@ -28,8 +28,9 @@ public class LichessControllerMapper {
                 .winner(lichessGameDto.getWinner())
                 .opening(lichessGameDto.getOpening().getName())
                 .status(lichessGameDto.getStatus())
-                .players(new String[]{lichessGameDto.getPlayers().getWhite().getUser().getName(),
-                        lichessGameDto.getPlayers().getBlack().getUser().getName()}).build();
+                .players(new String[] { lichessGameDto.getPlayers().getWhite().getUser().getName(),
+                        lichessGameDto.getPlayers().getBlack().getUser().getName() })
+                .build();
     }
 
     public Openings map(List<OpeningModel> openingList) {

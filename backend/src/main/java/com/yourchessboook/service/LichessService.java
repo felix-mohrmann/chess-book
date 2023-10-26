@@ -1,14 +1,15 @@
-package de.yourchessboook.service;
+package com.yourchessboook.service;
 
-import de.yourchessboook.model.OpeningModel;
-import de.yourchessboook.model.GameEntity;
-import de.yourchessboook.repo.GameRepository;
-import de.yourchessboook.repo.OpeningRepository;
-import de.yourchessboook.rest.lichess.LichessClient;
-import de.yourchessboook.rest.lichess.LichessGameDto;
-import de.yourchessboook.rest.lichess.LichessGamesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.yourchessboook.model.GameEntity;
+import com.yourchessboook.model.OpeningModel;
+import com.yourchessboook.repo.GameRepository;
+import com.yourchessboook.repo.OpeningRepository;
+import com.yourchessboook.rest.lichess.LichessClient;
+import com.yourchessboook.rest.lichess.LichessGameDto;
+import com.yourchessboook.rest.lichess.LichessGamesDto;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,7 +25,8 @@ public class LichessService {
     private final OpeningRepository openingRepository;
 
     @Autowired
-    public LichessService(LichessClient lichessClient, GameRepository gameRepository, OpeningRepository openingRepository) {
+    public LichessService(LichessClient lichessClient, GameRepository gameRepository,
+            OpeningRepository openingRepository) {
         this.lichessClient = lichessClient;
         this.gameRepository = gameRepository;
         this.openingRepository = openingRepository;
@@ -50,7 +52,9 @@ public class LichessService {
             gameEntity.setMoves(lichessGameDto.getMoves());
             gameEntity.setWhitePlayer(lichessGameDto.getPlayers().getWhite().getUser().getName());
             gameEntity.setBlackPlayer(lichessGameDto.getPlayers().getBlack().getUser().getName());
-            gameEntity.setWinner(evaluate(lichessGameDto.getWinner(), lichessGameDto.getPlayers().getWhite().getUser().getName(), lichessGameDto.getPlayers().getBlack().getUser().getName()));
+            gameEntity.setWinner(
+                    evaluate(lichessGameDto.getWinner(), lichessGameDto.getPlayers().getWhite().getUser().getName(),
+                            lichessGameDto.getPlayers().getBlack().getUser().getName()));
             gameRepository.save(gameEntity);
         }
     }
@@ -90,31 +94,37 @@ public class LichessService {
                 if (gameEntity.getWinner().equals(username)) {
                     unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
-                            .fen(openingRepository.findByName(openingName).isPresent() ? openingRepository.findByName(openingName).get().getFen() : "not Found")
+                            .fen(openingRepository.findByName(openingName).isPresent()
+                                    ? openingRepository.findByName(openingName).get().getFen()
+                                    : "not Found")
                             .numWins(1)
                             .build());
                 } else if (gameEntity.getWinner().equals(DRAW)) {
                     unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
-                            .fen(openingRepository.findByName(openingName).isPresent() ? openingRepository.findByName(openingName).get().getFen() : "not Found")
+                            .fen(openingRepository.findByName(openingName).isPresent()
+                                    ? openingRepository.findByName(openingName).get().getFen()
+                                    : "not Found")
                             .numDraw(1)
                             .build());
                 } else {
                     unsortedOpeningList.add(OpeningModel.builder()
                             .name(openingName)
-                            .fen(openingRepository.findByName(openingName).isPresent() ? openingRepository.findByName(openingName).get().getFen() : "not Found")
+                            .fen(openingRepository.findByName(openingName).isPresent()
+                                    ? openingRepository.findByName(openingName).get().getFen()
+                                    : "not Found")
                             .numLosses(1)
                             .build());
                 }
             }
         }
 
-        //sort opening list depending on most played
+        // sort opening list depending on most played
         List<OpeningModel> sortedOpeningList = unsortedOpeningList.stream()
                 .sorted(Comparator.comparing(OpeningModel::getTotalGames).reversed())
                 .collect(Collectors.toList());
 
-        //Cut down to top 3
+        // Cut down to top 3
         while (sortedOpeningList.size() > 3) {
             sortedOpeningList.remove(3);
         }
@@ -122,8 +132,9 @@ public class LichessService {
         return sortedOpeningList;
     }
 
-    private boolean present(String username, List<OpeningModel> unsortedOpeningList, GameEntity gameEntity, String openingName) {
-        for (OpeningModel opening : unsortedOpeningList) { //opening existing?
+    private boolean present(String username, List<OpeningModel> unsortedOpeningList, GameEntity gameEntity,
+            String openingName) {
+        for (OpeningModel opening : unsortedOpeningList) { // opening existing?
             if (opening.getName().equals(openingName)) {
                 if (gameEntity.getWinner().equals(username)) {
                     opening.win();

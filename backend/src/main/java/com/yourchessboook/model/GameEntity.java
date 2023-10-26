@@ -1,4 +1,4 @@
-package de.yourchessboook.model;
+package com.yourchessboook.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,10 +33,13 @@ public class GameEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         GameEntity that = (GameEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(opening, that.opening) && Objects.equals(moves, that.moves);
+        return Objects.equals(id, that.id) && Objects.equals(opening, that.opening)
+                && Objects.equals(moves, that.moves);
     }
 
     @Override

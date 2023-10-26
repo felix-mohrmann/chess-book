@@ -1,4 +1,4 @@
-package de.yourchessboook.api;
+package com.yourchessboook.api;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,5 +13,7 @@ import java.util.List;
 public class Openings {
     private List<Opening> openings = new LinkedList<>();
 
-    public void addOpening(Opening opening){this.openings.add(opening);}
+    public void addOpening(Opening opening) {
+        this.openings.add(opening);
+    }
 }

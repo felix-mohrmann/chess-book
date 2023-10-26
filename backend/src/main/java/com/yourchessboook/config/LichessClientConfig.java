@@ -1,7 +1,8 @@
-package de.yourchessboook.config;
+package com.yourchessboook.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.yourchessboook.rest.lichess.*;
+import com.yourchessboook.rest.lichess.*;
+
 import feign.Feign;
 import feign.Logger;
 import feign.jackson.JacksonEncoder;

@@ -1,14 +1,15 @@
-package de.yourchessboook.controller;
+package com.yourchessboook.controller;
 
-import de.yourchessboook.api.LichessGames;
-import de.yourchessboook.api.Openings;
-import de.yourchessboook.model.OpeningModel;
-import de.yourchessboook.rest.lichess.LichessGamesDto;
-import de.yourchessboook.service.LichessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.yourchessboook.api.LichessGames;
+import com.yourchessboook.api.Openings;
+import com.yourchessboook.model.OpeningModel;
+import com.yourchessboook.rest.lichess.LichessGamesDto;
+import com.yourchessboook.service.LichessService;
 
 import java.util.List;
 

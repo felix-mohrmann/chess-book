@@ -1,4 +1,4 @@
-package de.yourchessboook.model;
+package com.yourchessboook.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name="variants")
+@Table(name = "variants")
 @Getter
 @Setter
 public class VariantEntity {

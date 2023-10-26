@@ -1,7 +1,8 @@
-package de.yourchessboook.repo;
+package com.yourchessboook.repo;
 
-import de.yourchessboook.model.OpeningEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.yourchessboook.model.OpeningEntity;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package de.yourchessboook.rest.lichess;
+package com.yourchessboook.rest.lichess;
 
 import lombok.Getter;
 import lombok.Setter;

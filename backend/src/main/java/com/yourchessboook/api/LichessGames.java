@@ -1,4 +1,4 @@
-package de.yourchessboook.api;
+package com.yourchessboook.api;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import java.util.List;
 public class LichessGames {
     List<LichessGame> lichessGames = new LinkedList<>();
 
-    public void addLichessGame(LichessGame lichessGame){
+    public void addLichessGame(LichessGame lichessGame) {
         this.lichessGames.add(lichessGame);
     }
 }

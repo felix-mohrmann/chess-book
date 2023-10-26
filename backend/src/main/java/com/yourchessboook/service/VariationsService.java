@@ -1,15 +1,13 @@
-package de.yourchessboook.service;
+package com.yourchessboook.service;
 
-import de.yourchessboook.api.Variant;
-import de.yourchessboook.api.Variants;
-import de.yourchessboook.model.VariantEntity;
-import de.yourchessboook.repo.VariantRepository;
+import com.yourchessboook.api.Variant;
+import com.yourchessboook.model.VariantEntity;
+import com.yourchessboook.repo.VariantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VariationsService {

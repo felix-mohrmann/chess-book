@@ -1,4 +1,4 @@
-package de.yourchessboook.rest.lichess;
+package com.yourchessboook.rest.lichess;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -46,4 +46,3 @@ public class LichessGamesDecoder extends JacksonDecoder {
         return mapper.treeToValue(jsonNode, LichessGameDto.class);
     }
 }
-

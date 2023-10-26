@@ -1,8 +1,8 @@
-package de.yourchessboook.controller;
+package com.yourchessboook.controller;
 
-import de.yourchessboook.api.LichessCodeAndVerifier;
-import de.yourchessboook.oauth.PKCEUtil;
-import de.yourchessboook.service.LichessOAuthService;
+import com.yourchessboook.api.LichessCodeAndVerifier;
+import com.yourchessboook.oauth.PKCEUtil;
+import com.yourchessboook.service.LichessOAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +19,9 @@ public class AuthController {
     }
 
     @GetMapping("/params")
-    public String[] getParams(){
+    public String[] getParams() {
         PKCEUtil pkceUtil = new PKCEUtil();
-        return new String[]{
+        return new String[] {
                 pkceUtil.getCode_challenge(),
                 pkceUtil.getCode_challenge_method(),
                 pkceUtil.getState(),
@@ -30,7 +30,7 @@ public class AuthController {
     }
 
     @PostMapping("/access-token")
-    public String createToken(@RequestBody LichessCodeAndVerifier codeAndVerifier){
+    public String createToken(@RequestBody LichessCodeAndVerifier codeAndVerifier) {
         return lichessOAuthService.authenticate(codeAndVerifier.getCode(), codeAndVerifier.getVerifier());
     }
 }

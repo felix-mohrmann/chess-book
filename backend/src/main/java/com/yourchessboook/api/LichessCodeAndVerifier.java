@@ -1,4 +1,4 @@
-package de.yourchessboook.api;
+package com.yourchessboook.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
