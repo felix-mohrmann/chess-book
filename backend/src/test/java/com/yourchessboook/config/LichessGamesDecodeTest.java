@@ -1,10 +1,10 @@
-package de.yourchessboook.config;
+package com.yourchessboook.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.yourchessboook.rest.lichess.LichessGameDto;
-import de.yourchessboook.rest.lichess.LichessGamesDecoder;
-import de.yourchessboook.rest.lichess.LichessGamesDto;
+import com.yourchessboook.rest.lichess.LichessGameDto;
+import com.yourchessboook.rest.lichess.LichessGamesDecoder;
+import com.yourchessboook.rest.lichess.LichessGamesDto;
 import feign.Request;
 import feign.RequestTemplate;
 import feign.Response;
@@ -33,7 +33,7 @@ public class LichessGamesDecodeTest {
         File resourceFile = getLichessNdJsonFile();
         byte[] jsonData = FileUtils.readFileToByteArray(resourceFile);
 
-        Request request = create(GET, "", emptyMap(), new byte[]{}, defaultCharset(), new RequestTemplate());
+        Request request = create(GET, "", emptyMap(), new byte[] {}, defaultCharset(), new RequestTemplate());
 
         Response response = Response.builder()
                 .request(request)
