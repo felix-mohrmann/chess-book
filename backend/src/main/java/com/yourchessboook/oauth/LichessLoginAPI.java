@@ -1,4 +1,4 @@
-package de.yourchessboook.oauth;
+package com.yourchessboook.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -11,12 +11,12 @@ import org.springframework.web.client.RestTemplate;
 public class LichessLoginAPI {
     private final static String LICHESS_LOGIN_URL = "https://lichess.org/api/token";
     private final RestTemplate restTemplate;
-    private final PKCEUtil pkceUtil;
+    // private final PKCEUtil pkceUtil;
 
     @Autowired
     public LichessLoginAPI(RestTemplate restTemplate, PKCEUtil pkceUtil) {
         this.restTemplate = restTemplate;
-        this.pkceUtil = pkceUtil;
+        // this.pkceUtil = pkceUtil;
     }
 
     public LichessAccessTokenResponseDto getToken(String code, String verifier) {
