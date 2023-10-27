@@ -7,9 +7,9 @@ export default function Navbar() {
   return (
     <Wrapper>
       {!token && <NavLink to="/">Login</NavLink>}
-      {token && <NavLink to="profile">Profile</NavLink>}
-      {token && <NavLink to="openings">Openings</NavLink>}
-      {token && <NavLink to="variations">Variations</NavLink>}
+      {token && <NavLink to="/profile">Profile</NavLink>}
+      {token && <NavLink to="/openings">Openings</NavLink>}
+      {token && <NavLink to="/variations">Variations</NavLink>}
     </Wrapper>
   )
 }

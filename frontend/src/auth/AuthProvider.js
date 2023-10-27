@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import AuthContext from './AuthContext'
-import { getTokenWithLichessCode } from '../service/lichess-api'
+import { getLichessToken } from '../service/lichess-api'
 import { getParams } from '../service/chess-book-api'
 
 export default function AuthProvider({ children }) {
@@ -18,9 +18,7 @@ export default function AuthProvider({ children }) {
   }, [params])
 
   const loginWithLichess = code =>
-    getTokenWithLichessCode(code, localStorage.getItem('code_verifier')).then(
-      setToken
-    )
+    getLichessToken(code, localStorage.getItem('code_verifier')).then(setToken)
 
   return (
     <AuthContext.Provider

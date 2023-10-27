@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getTokenWithLichessCode = (code, verifier) =>
+export const getLichessToken = (code, verifier) =>
   axios
     .post('/api/chess-book/auth/access-token', { code, verifier })
     .then(response => response.data)

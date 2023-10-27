@@ -14,11 +14,10 @@ export default function Profile() {
         .then(setProfile)
         .catch(error => console.error(error))
     }
-  }, [token])
-
-  if (profile) {
-    setUsername(profile.username)
-  }
+    if (profile) {
+      setUsername(profile.username)
+    }
+  }, [token, profile])
 
   return (
     <PageStyle>
