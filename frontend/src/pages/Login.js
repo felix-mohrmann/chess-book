@@ -3,7 +3,7 @@ import { useAuth } from '../auth/AuthProvider'
 import { useEffect } from 'react'
 import LinkButton from '../components/LinkButton'
 import image from '../image/lichessPony.png'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 export default function Login() {
   const { params } = useAuth()

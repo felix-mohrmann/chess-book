@@ -8,7 +8,7 @@ import { ButtonGroup, TextField } from '@mui/material'
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined'
 import DeleteIcon from '@mui/icons-material/Delete'
 import SwapVertIcon from '@mui/icons-material/SwapVert'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { getVariations, saveVariation } from '../service/chess-book-api'
 import Variation from '../components/Variation'
 

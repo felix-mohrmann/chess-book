@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import PageStyle from '../components/PageStyle'
 import Navbar from '../components/Navbar'
 import Chessboard from 'chessboardjsx'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 export default function Opening() {
   const {

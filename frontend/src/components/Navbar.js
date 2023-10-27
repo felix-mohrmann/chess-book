@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 

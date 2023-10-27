@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar'
 import PageStyle from '../components/PageStyle'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useAuth } from '../auth/AuthProvider'
 import { getBlackOpenings, getWhiteOpenings } from '../service/chess-book-api'

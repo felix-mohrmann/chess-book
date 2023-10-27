@@ -1,5 +1,5 @@
 import Button from './Button'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { deleteVariation } from '../service/chess-book-api'
 
 export default function Variation({ variation, update, show }) {

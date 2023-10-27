@@ -1,5 +1,5 @@
 import Button from './Button'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 export default function LinkButton(props) {
   return <ButtonStyled as="a" {...props} />
