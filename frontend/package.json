@@ -3,28 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
-    "@mui/icons-material": "^5.0.1",
-    "@mui/material": "^5.0.1",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "chess.js": "^0.12.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.12",
+    "@mui/material": "^5.14.12",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.1",
+    "chess.js": "^1.0.0-beta.6",
     "chessboardjsx": "^2.4.7",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-router-dom": "^6.2.2",
-    "styled-components": "^5.3.1",
+    "node": "^20.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prettier": "prettier --write ."
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -45,9 +46,7 @@
     ]
   },
   "devDependencies": {
-    "axios": "^0.21.4",
-    "prettier": "2.3.2",
-    "prop-types": "^15.7.2"
-  },
-  "proxy": "http://localhost:8080"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "babel-plugin-styled-components": "^2.1.4"
+  }
 }
