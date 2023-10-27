@@ -6,14 +6,10 @@ export default function Navbar() {
   const { token } = useAuth()
   return (
     <Wrapper>
-      {!token && (
-        <NavLink exact to="/">
-          Login
-        </NavLink>
-      )}
-      {token && <NavLink to="/profile">Profile</NavLink>}
-      {token && <NavLink to="/openings">Openings</NavLink>}
-      {token && <NavLink to="/variations">Variations</NavLink>}
+      {!token && <NavLink to="/">Login</NavLink>}
+      {token && <NavLink to="profile">Profile</NavLink>}
+      {token && <NavLink to="openings">Openings</NavLink>}
+      {token && <NavLink to="variations">Variations</NavLink>}
     </Wrapper>
   )
 }
